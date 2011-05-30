@@ -1,0 +1,16 @@
+#!/bin/sh
+# turns a defaults entry into a file containing a javascript function 
+# in which the statements are the contents of the defaults entry
+#usage="$0 <defaultdomain>"
+if [ "x$1" == "x" ]; then
+  domain="com.apple.xcode"
+else
+  domain="$1"
+fi
+data=`defaults read $domain`
+echo "function()" $data
+
+
+
+
+

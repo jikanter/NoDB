@@ -1,0 +1,17 @@
+#!/bin/sh
+# turns a plist into a file containing a javascript function 
+# in which the statements are the contents of the plist
+# TODO: make this utility generate VALID javascript
+#usage="$0 <plistfilename>"
+if [ "x$1" == "x" ]; then
+  filename="Resources/WebPlist.plist"
+else
+  filename="$1"
+fi
+data=`pl -input "$filename"`
+echo "function()" $data
+
+
+
+
+
