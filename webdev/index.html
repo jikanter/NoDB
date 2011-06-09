@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="styles/webdev.css"/>
+  <link rel="stylesheet" type="text/css" href="styles/categorize.css"/>
+  <script src="scripts/jquery-1.2.6.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    jQuery = jQuery.noConflict(true);
+    jQuery(document).ready(function() {
+      jQuery(".date-application a").click(function() { 
+        var hpos = jQuery(this).attr("href").indexOf("#");
+        var frag = jQuery(this).attr("href").substring(hpos+1);
+        frag = frag.replace("|","~");
+        frag = frag.replace(/;/g,"/");
+        frag = frag.replace(/\|/g, ".");
+        window.document.location = "http://localhost/" + frag;
+        return false;
+      }); 
+      jQuery(".webdev-application a").click(function() { 
+        var hpos = jQuery(this).attr("href").indexOf("#");
+        var frag = jQuery(this).attr("href").substring(hpos+3);
+        window.document.location = "Applications/" + frag.replace("|","/") + ".html";
+        return false;
+      });
+      jQuery(".native-application a").click(function() { 
+        var hpos = jQuery(this).attr("href").indexOf("#");
+        var frag = jQuery(this).attr("href").substring(hpos+5);
+        frag = frag.replace(/,/g,".");
+        window.document.location = "http://local.developer.apple.com/WWW/Users/admin/Developer/Projects/"+frag;
+        return false;
+      });
+    });
+  </script>
+  <script type="text/javascript" src="scripts/index-script.js"></script>
+  <script type="text/javascript" src="http://localhost/~admin/2011/3/8/scripts/index-script.js"></script>
+  <script type="text/javascript" src="scripts/chipmarks.js"></script>
+
+  <script type="text/javascript" src="../ajax/api/simile-ajax-api.js"></script>
+  <script type="text/javascript" src="scripts/Graphics.js"></script>
+</head>
+<body onload="onLoad();">
+  <div id="painting-container">
+  </div>
+  <div class="page-container">    
+    <ul id="application-list">
+      <li class="software"><a href="/">Root</a></li>
+      <li class="application"><a href="http://zf.jk.onshore.com">onshore web</a></li>
+      <li class="application"><a href="http://localhost/~admin/calendar.php">Calendar</a></li>
+      <li class="application"><a href="../mashups/">Mashups</a></li>
+      <li class="application"><a href="http://localhost/~admin/2011/5/6/extensible.html">extensible app</a></li>
+      <li class="application"><a href="http://localhost/~admin/2011/5/6/WebDesign.app/Site">WebDesign app</a></li>
+      <li class="application"><a href="http://localhost/~admin/2011/5/6/WebDesign.app/webdev">This Project - Apache Version</a></li>
+    </ul>
+    <ul id="native-application-list">
+      <li class="native-application"><a class="apps" href="#app|Gaydar">Gaydar App</a></li>
+      <li class="native-application"><a class="apps" href="#app|IStimuli">IStimuli</a></li>
+      <li class="native-application"><a class="apps" href="#app|ITransform">ITransform</a></li>
+      <li class="native-application"><a class="apps" href="#app|LogicalVolumeManager">LogicalVolumeManager</a></li>
+      <li class="native-application"><a class="apps" href="#app|Exhibit">Exhibit</a></li>
+      <li class="native-application"><a class="apps" href="#app|Forum">Forum</a></li>
+      <li class="native-application"><a class="apps" href="#app|OnshoreFm">OnshoreFm</a></li>
+      <li class="native-application"><a class="apps" href="#app|Ls,new">Ls</a></li>
+      <li class="native-application"><a class="apps" href="#app|Bsdiff,app">BsDiff</a></li>
+      <li class="native-application"><a class="apps" href="#app|Pim">Pim</a></li>
+    </ul>
+    <ul li="design-application-list">
+      <li class="webdev-application"><a class="apps" href="#a|RealEstate|real-estate">real-estate</a></li>
+      <li class="webdev-application"><a class="apps" href="#a|RealEstate|real-estate-splash">real-estate-splash</a></li>
+      <li class="webdev-application"><a class="apps" href="#a|FilmStudent|xmpedit">xmpedit</a></li>
+      <li class="webdev-application"><a class="apps" href="#a|FilmStudent|filmstudent_design">filmstudent_design</a></li>
+      <li class="webdev-application"><a class="apps" href="#a|DocumentationHelper|appledocs">Documentation Helper</a></li>
+    </ul>
+    <ul li="date-application-list">
+      <li class="date-application"><a class="apps" href="#|admin;2011;5;6;extensible">extensible app</a></li>
+      <li class="date-application"><a class="apps" href="#|admin;2011;2;20;portal;public">onguard portal</a></li>
+      <li class="date-application"><a class="apps" href="#|admin;2011;2;25;webutil|html">web utilities</a></li>
+      <li class="date-application"><a class="apps" href="#|admin;2011;4;9;Forum|design|site|iweb">Forum Design</a></li>
+      <li class="date-application"><a class="apps" href="#|admin;2011;5;7;Books;Readme|html">Library Readme</a></li>
+    </ul>
+    <ul li="platform-application-list">
+      <li class="platform-application"><a href="webdev.tmproj?format=web">This Project - TextMate - web</a></li>
+      <li class="platform-application"><a href="webdev.tmproj?format=txt">This Project - TextMate - txt (renders as xml, query parameters not yet supported)</a></li>
+      <li class="platform-application"><a href="webdev.tmproj?format=bin">This Project - TextMate - bin</a></li>
+    </ul>
+  </div>
+</body>
+</html>
