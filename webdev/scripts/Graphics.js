@@ -76,6 +76,32 @@ function onLoad() {
  }
  paintPainting();
 }
-
+function placeWatermark() { 
+  if (document.layers) { 
+    document.watermark.pageX = (window.innerHeight - document.watermark.document.myImage.width) / 2;
+    document.watermark.pageY = (window.innerHeight - document.watermark.document.myImage.width) / 2;
+    document.watermark.visibility = 'visible';
+  }
+}
+if (typeof CSS == "undefined") { 
+  var CSS = new Object();
+}
+var cssRule = {};
+function createRule(selector,pairs) {
+  var start = selector + "{\n";
+  var end = "\n}";
+  var rules = "";
+  for (var i = 0; i < pairs.length; i++) { 
+    property = pairs[i].pop();
+    val = pairs[i].pop();
+    rules += property + ":" + val + ";";
+  }
+  return start + rules + end;
+}
+function parseRules(stringLine) { 
+  // parse a css rule 
+  rules = stringLine.slice(stringLine.indexOf("{"),stringLine.rindexOf("}"))
+  ruleList = rules.split(";");
+}
 
 
