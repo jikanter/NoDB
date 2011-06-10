@@ -103,5 +103,20 @@ function parseRules(stringLine) {
   rules = stringLine.slice(stringLine.indexOf("{"),stringLine.rindexOf("}"))
   ruleList = rules.split(";");
 }
-
+Graphics.Tooltip = function() { 
+   /* tooltipShadow {
+   *      background: url(shadow.png);  /* translucent shadow * /
+   *   }
+   *
+   *   .tooltipContent {
+   *      left: -4px; top: -4px;        /* how much of the shadow shows * /
+   *      background-color: #ff0;       /* yellow background * /
+   *      border: solid black 1px;      /* thin black border * /
+   *      padding: 5px;                 /* spacing between text and border * /
+   *      font: bold 10pt sans-serif;   /* small bold font * /
+   *   }
+   */
+   this.tooltip = document.createElement('div');
+   
+}
 
