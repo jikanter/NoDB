@@ -8,7 +8,7 @@ else
   domain="$1"
 fi
 data=`defaults read $domain`
-echo "function()" $data
+echo "var defaults = function()" $data
 
 
 

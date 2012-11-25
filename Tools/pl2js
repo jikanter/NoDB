@@ -9,7 +9,7 @@ else
   filename="$1"
 fi
 data=`pl -input "$filename"`
-echo "function()" $data
+echo "var pList = function()" $data
 
 
 

@@ -1,3 +1,2 @@
-#!/bin/bash
-cd server;
-./`basename $0`;
+#!/bin/sh
+java -jar lib/start.jar jetty.xml

@@ -1,2 +1,3 @@
 #!/bin/sh -x
-fresno -p "http://sleepy.newmediameltdown.com:9888"
+#fresno -p "http://jk.jordankanter.selfip.net:9888"
+windmill
