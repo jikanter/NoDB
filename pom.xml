@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.newmediameltdown.projects</groupId>
+  <artifactId>webdesign</artifactId>
+  <version>1.0</version>
+  <scm>
+    <connection>scm:svn:http://jk.onshore.com/~admin/repository/webdevel/trunk/</connection>
+  <developerConnection>scm:svn:http://jk.onshore.com/~admin/repository/webdevel/trunk/</developerConnection>
+  </scm>
+</project>

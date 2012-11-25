@@ -1,0 +1,546 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+
+<!-- =============================================================== -->
+<!-- Configure the Jetty Server                                      -->
+<!-- =============================================================== -->
+<Configure id="Server" class="org.mortbay.jetty.Server">
+
+    <!-- =========================================================== -->
+    <!-- Server Thread Pool                                          -->
+    <!-- =========================================================== -->
+    <Set name="ThreadPool">
+      <New class="org.mortbay.thread.BoundedThreadPool">
+        <Set name="minThreads">25</Set>
+        <Set name="maxThreads">250</Set>
+      </New>
+    </Set>
+
+    <!-- =========================================================== -->
+    <!-- Set connectors                                              -->
+    <!-- =========================================================== -->
+    <!-- One of each type!                                           -->
+    <!-- =========================================================== -->
+    <Set name="connectors">
+      <Array type="org.mortbay.jetty.Connector">
+
+        <Item>
+          <New class="org.mortbay.jetty.bio.SocketConnector">
+            <Set name="port">7888</Set>
+            <Set name="maxIdleTime">50000</Set>
+          </New>
+        </Item>
+      </Array>
+    </Set>
+
+    <!-- =========================================================== -->
+    <!-- Set handler Collection Structure                            --> 
+    <!-- =========================================================== -->
+    <Set name="handler">
+      <New id="handlers" class="org.mortbay.jetty.handler.HandlerCollection">
+        <Set name="handlers">
+         <Array type="org.mortbay.jetty.Handler">
+           <Item>
+             <New id="contexts" class="org.mortbay.jetty.handler.ContextHandlerCollection"/>
+           </Item>
+           <Item>
+             <New id="defaultHandler" class="org.mortbay.jetty.handler.DefaultHandler"/>
+           </Item>
+         </Array>
+        </Set>
+      </New>
+    </Set>
+    
+    <!-- ======================================================= -->
+    <!-- Configure specific contexts                             -->
+    <!-- ======================================================= -->
+    <Ref id="contexts">
+     <Set name="handlers">
+      <Array type="org.mortbay.jetty.Handler">
+        <!-- ======================================================= -->
+        <!-- Configure a context directly - no XML parser required   -->
+        <!-- ======================================================= -->
+	<Item>
+          <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+            <Set name="contextPath">/exhibit</Set>
+            <Set name="resourceBase">./src/webapp/</Set>
+            <Set name="handler">
+              <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+                <Set name="servlets">
+                    <Array type="org.mortbay.jetty.servlet.ServletHolder">
+                        <Item>
+                           <New class="org.mortbay.jetty.servlet.ServletHolder">
+                               <Set name="name">Exhibit</Set>
+                               <Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+                           </New>
+                        </Item>
+                     </Array>
+                 </Set>
+
+                <Set name="servletMappings">
+                    <Array type="org.mortbay.jetty.servlet.ServletMapping">
+                        <Item>
+                           <New class="org.mortbay.jetty.servlet.ServletMapping">
+                             <Set name="pathSpec">/</Set>
+                             <Set name="servletName">Exhibit</Set>
+                           </New>
+                        </Item>
+		    </Array>
+		</Set>
+              </New>
+            </Set>
+          </New>
+        </Item>
+	<Item>
+          <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+            <Set name="contextPath">/ajax</Set>
+            <Set name="resourceBase">./src/ajax/</Set>
+            <Set name="handler">
+              <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+                <Set name="servlets">
+                    <Array type="org.mortbay.jetty.servlet.ServletHolder">
+                        <Item>
+                           <New class="org.mortbay.jetty.servlet.ServletHolder">
+                               <Set name="name">Ajax</Set>
+                               <Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+                           </New>
+                        </Item>
+                     </Array>
+                 </Set>
+
+                <Set name="servletMappings">
+                    <Array type="org.mortbay.jetty.servlet.ServletMapping">
+                        <Item>
+                           <New class="org.mortbay.jetty.servlet.ServletMapping">
+                             <Set name="pathSpec">/</Set>
+                             <Set name="servletName">Ajax</Set>
+                           </New>
+                        </Item>
+		    </Array>
+		</Set>
+              </New>
+            </Set>
+          </New>
+        </Item>
+	<Item>
+          <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+            <Set name="contextPath">/mashups</Set>
+            <Set name="resourceBase">./src/mashups/</Set>
+            <Set name="handler">
+              <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+                <Set name="servlets">
+                    <Array type="org.mortbay.jetty.servlet.ServletHolder">
+                        <Item>
+                           <New class="org.mortbay.jetty.servlet.ServletHolder">
+                               <Set name="name">Mashups</Set>
+                               <Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+                           </New>
+                        </Item>
+                     </Array>
+		</Set>
+
+                <Set name="servletMappings">
+                    <Array type="org.mortbay.jetty.servlet.ServletMapping">
+                        <Item>
+                           <New class="org.mortbay.jetty.servlet.ServletMapping">
+                             <Set name="pathSpec">/</Set>
+                             <Set name="servletName">Mashups</Set>
+                           </New>
+                        </Item>
+		    </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+        </Item>
+
+	<Item>
+          <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+            <Set name="contextPath">/test</Set>
+            <Set name="resourceBase">./src/test/</Set>
+            <Set name="handler">
+              <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+                <Set name="servlets">
+                    <Array type="org.mortbay.jetty.servlet.ServletHolder">
+                        <Item>
+                           <New class="org.mortbay.jetty.servlet.ServletHolder">
+                               <Set name="name">Tests</Set>
+                               <Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+                           </New>
+                        </Item>
+                     </Array>
+		</Set>
+
+                <Set name="servletMappings">
+                    <Array type="org.mortbay.jetty.servlet.ServletMapping">
+                        <Item>
+                           <New class="org.mortbay.jetty.servlet.ServletMapping">
+                             <Set name="pathSpec">/</Set>
+                             <Set name="servletName">Tests</Set>
+                           </New>
+                        </Item>
+		    </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+        </Item>
+	<Item>
+          <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+            <Set name="contextPath">/graphics</Set>
+            <Set name="resourceBase">./src/graphics/</Set>
+            <Set name="handler">
+              <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+                <Set name="servlets">
+                    <Array type="org.mortbay.jetty.servlet.ServletHolder">
+                        <Item>
+                           <New class="org.mortbay.jetty.servlet.ServletHolder">
+                               <Set name="name">Graphics</Set>
+                               <Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+                           </New>
+                        </Item>
+                     </Array>
+		</Set>
+
+                <Set name="servletMappings">
+                    <Array type="org.mortbay.jetty.servlet.ServletMapping">
+                        <Item>
+                           <New class="org.mortbay.jetty.servlet.ServletMapping">
+                             <Set name="pathSpec">/</Set>
+                             <Set name="servletName">Graphics</Set>
+                           </New>
+                        </Item>
+		    </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+        </Item>
+
+	<Item>
+          <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+            <Set name="contextPath">/learn</Set>
+            <Set name="resourceBase">./src/learn/</Set>
+            <Set name="handler">
+              <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+                <Set name="servlets">
+                    <Array type="org.mortbay.jetty.servlet.ServletHolder">
+                        <Item>
+                           <New class="org.mortbay.jetty.servlet.ServletHolder">
+                               <Set name="name">Learn</Set>
+                               <Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+                           </New>
+                        </Item>
+                     </Array>
+		</Set>
+
+                <Set name="servletMappings">
+                    <Array type="org.mortbay.jetty.servlet.ServletMapping">
+                        <Item>
+                           <New class="org.mortbay.jetty.servlet.ServletMapping">
+                             <Set name="pathSpec">/</Set>
+                             <Set name="servletName">Learn</Set>
+                           </New>
+                        </Item>
+		    </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+        </Item>
+	
+	<Item>
+	  <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+	    <Set name="contextPath">/service</Set>
+	    <Set name="resourceBase">./src/service/</Set>
+	    <Set name="handler">
+	      <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+		<Set name="servlets">
+		  <Array type="org.mortbay.jetty.servlet.ServletHolder">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletHolder">
+			<Set name="name">Service</Set>
+			<Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+		  </New>
+		    </Item>
+		  </Array>
+		</Set>
+		<Set name="servletMappings">
+		  <Array type="org.mortbay.jetty.servlet.ServletMapping">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletMapping">
+			<Set name="pathSpec">/</Set>
+		    <Set name="servletName">Service</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+	</Item>
+	<Item>
+	  <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+	    <Set name="contextPath">/web</Set>
+	    <Set name="resourceBase">../</Set>
+	    <Set name="handler">
+	      <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+		<Set name="servlets">
+		  <Array type="org.mortbay.jetty.servlet.ServletHolder">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletHolder">
+			<Set name="name">Web</Set>
+			<Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+		<Set name="servletMappings">
+		  <Array type="org.mortbay.jetty.servlet.ServletMapping">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletMapping">
+			<Set name="pathSpec">/</Set>
+			<Set name="servletName">Web</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+	</Item>	
+	<Item>
+	  <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+	    <Set name="contextPath">/api</Set>
+	    <Set name="resourceBase">./src/api</Set>
+	    <Set name="handler">
+	      <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+		<Set name="servlets">
+		  <Array type="org.mortbay.jetty.servlet.ServletHolder">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletHolder">
+			<Set name="name">Api</Set>
+			<Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+		<Set name="servletMappings">
+		  <Array type="org.mortbay.jetty.servlet.ServletMapping">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletMapping">
+			<Set name="pathSpec">/</Set>
+			<Set name="servletName">Api</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+	</Item>
+	<Item>
+	  <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+	    <Set name="contextPath">/webdesign</Set>
+	    <Set name="resourceBase">./src/mashups</Set>
+	    <Set name="handler">
+	      <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+		<Set name="servlets">
+		  <Array type="org.mortbay.jetty.servlet.ServletHolder">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletHolder">
+			<Set name="name">WebDesign</Set>
+			<Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+		<Set name="servletMappings">
+		  <Array type="org.mortbay.jetty.servlet.ServletMapping">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletMapping">
+			<Set name="pathSpec">/</Set>
+			<Set name="servletName">WebDesign</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+	</Item>
+
+	<Item>
+	  <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+	    <Set name="contextPath">/webdev</Set>
+	    <Set name="resourceBase">../</Set>
+	    <Set name="handler">
+	      <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+		<Set name="servlets">
+		  <Array type="org.mortbay.jetty.servlet.ServletHolder">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletHolder">
+			<Set name="name">WebDev</Set>
+			<Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+		<Set name="servletMappings">
+		  <Array type="org.mortbay.jetty.servlet.ServletMapping">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletMapping">
+			<Set name="pathSpec">/</Set>
+			<Set name="servletName">WebDev</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+	</Item>
+
+	<Item>
+	  <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+	    <Set name="contextPath">/Util</Set>
+	    <Set name="resourceBase">./src/Util/</Set>
+	    <Set name="handler">
+	      <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+		<Set name="servlets">
+		  <Array type="org.mortbay.jetty.servlet.ServletHolder">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletHolder">
+			<Set name="name">Util</Set>
+			<Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+		<Set name="servletMappings">
+		  <Array type="org.mortbay.jetty.servlet.ServletMapping">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletMapping">
+			<Set name="pathSpec">/</Set>
+			<Set name="servletName">Util</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+	</Item>
+
+	<Item>
+	  <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+	    <Set name="contextPath">/dojo</Set>
+	    <Set name="resourceBase">/Users/admin/Developer/Projects/dojo.svn</Set>
+	    <Set name="handler">
+	      <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+		<Set name="servlets">
+		  <Array type="org.mortbay.jetty.servlet.ServletHolder">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletHolder">
+			<Set name="name">Dojo</Set>
+			<Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+		<Set name="servletMappings">
+		  <Array type="org.mortbay.jetty.servlet.ServletMapping">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletMapping">
+			<Set name="pathSpec">/</Set>
+			<Set name="servletName">Dojo</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+	</Item>
+	
+	<Item>
+	  <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+	    <Set name="contextPath">/tab</Set>
+	    <Set name="resourceBase">./src/tabulator</Set>
+	    <Set name="handler">
+	      <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+		<Set name="servlets">
+		  <Array type="org.mortbay.jetty.servlet.ServletHolder">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletHolder">
+			<Set name="name">Tabulator</Set>
+			<Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+		<Set name="servletMappings">
+		  <Array type="org.mortbay.jetty.servlet.ServletMapping">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletMapping">
+			<Set name="pathSpec">/</Set>
+			<Set name="servletName">Tabulator</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+	</Item>
+	<Item>
+	  <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
+	    <Set name="contextPath">/lisp</Set>
+	    <Set name="resourceBase">/Lisp</Set>
+	    <Set name="handler">
+	      <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
+		<Set name="servlets">
+		  <Array type="org.mortbay.jetty.servlet.ServletHolder">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletHolder">
+			<Set name="name">lisp</Set>
+			<Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+		<Set name="servletMappings">
+		  <Array type="org.mortbay.jetty.servlet.ServletMapping">
+		    <Item>
+		      <New class="org.mortbay.jetty.servlet.ServletMapping">
+			<Set name="pathSpec">/</Set>
+			<Set name="servletName">lisp</Set>
+		      </New>
+		    </Item>
+		  </Array>
+		</Set>
+	      </New>
+	    </Set>
+	  </New>
+	</Item>
+      </Array>
+    </Set>
+  </Ref>
+  
+  <!-- =========================================================== -->
+  <!-- extra options                                               -->
+  <!-- =========================================================== -->
+  <Set name="stopAtShutdown">true</Set>
+  <!-- ensure/prevent Server: header being sent to browsers        -->
+  <Set name="sendServerVersion">true</Set>
+  
+</Configure>
+
+
+
+
+
+
+
+
+
