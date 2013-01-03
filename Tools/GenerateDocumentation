@@ -1,0 +1,10 @@
+#!/bin/sh -x
+JSDOCTOOLKITDIR="${HOME}/Sites/2011/3/24/jsdoc-toolkit-trunk"
+JSDOC="java -Djsdoc.dir=${JSDOCTOOLKITDIR}/jsdoc-toolkit -Djsdoc.template.dir=${JSDOCTOOLKITDIR}/jsdoc-toolkit/templates"
+${JSDOC} -jar ${HOME}/Sites/2011/3/24/jsdoc-toolkit-trunk/jsdoc-toolkit/jsrun.jar ${HOME}/Sites/2011/3/24/jsdoc-toolkit-trunk/jsdoc-toolkit/app/run.js \
+-r=5 -d=src/mashups/site/docs \
+-t=${HOME}/Sites/2011/3/24/jsdoc-toolkit-trunk/jsdoc-toolkit/templates/jsdoc \
+src/mashups/scripts \
+src/mashups/api \
+src/tabulator \
+src/ajax

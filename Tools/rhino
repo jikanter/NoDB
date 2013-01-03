@@ -1,0 +1,2 @@
+#!/bin/bash
+java -jar ~/Applications/alfresco-3.4.d/tomcat/webapps/alfresco/WEB-INF/lib/rhino-js-1.6R7.jar
