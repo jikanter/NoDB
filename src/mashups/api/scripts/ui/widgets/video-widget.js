@@ -1,4 +1,5 @@
 /**
+ * @file video-widget.js
  * @fileoverview html5 and flash player utilities
  */
 var lineDiv = function() {  

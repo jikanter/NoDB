@@ -1,6 +1,7 @@
 /**
  * @file: Search.js
- * @fileoverview: Search Module for javascript
+ * @fileoverview: Basic search javascript search module. Differs from L{Exhibit.TextSearchFacet} in that it 
+ * queries generically rather than just querying exhibit database elements.
  * 
  */
 WebDev.Search = function() { 
@@ -8,6 +9,7 @@ WebDev.Search = function() {
   var QueryString = {};
   var Results = {};
   var qjsLoaded = false; /* Is querystring.js loaded yet */
+  var searchWidgets = {};
 };
 
 WebDev.Search._SimpleQuery = function(query, appendTo) { 
