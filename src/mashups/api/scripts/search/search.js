@@ -5,11 +5,14 @@
  * 
  */
 WebDev.Search = function() { 
-  var base = {};
-  var QueryString = {};
-  var Results = {};
-  var qjsLoaded = false; /* Is querystring.js loaded yet */
-  var searchWidgets = {};
+  this.base = {};
+  this.QueryString = "";
+  this.Results = {};
+  this.resultsCompiled = false;
+  this.resultsAvailable = false;
+  this.resultsFromServerSession = {}; /* is serversession.js loaded */
+  this.qjsLoaded = false; /* Is querystring.js loaded yet */
+  this.searchWidgets = {};
 };
 
 WebDev.Search._SimpleQuery = function(query, appendTo) { 
@@ -19,7 +22,7 @@ WebDev.Search._SimpleQuery = function(query, appendTo) {
       s = s.replace(/&amp;/g, '&amp;amp;');
       s = s.replace(/&gt;/g, '&amp;gt;');
       s = s.replace(/&lt;/g, '&amp;lt;');
-      return s
+      return s;
     };
     
     var attrQuoteEscape = function(s) { 
@@ -70,4 +73,32 @@ WebDev.Search.Query = function(query, appendResultsTo, facetSearch, uiContext) {
     self.Results[0] = new WebDev.RemoteSearchFacet(facetSearch, uiContext);
   }
   return self.Results;
+};
+
+/* find the embedded results, somewhere in the model.
+   extract the keywords from the meta-model if available to enhance embedded results
+   for the document */
+WebDev.Search.EmbeddedResults = function(query, model) { 
+  model = model || "rdfxml";
+  if (model != "rdfxml") { 
+    if (!document.namespaces["search"]) { 
+      if (!document.namespaces || (document.namespaces == null)) {
+          document.namespaces = {"search": {}};
+      }
+      document.namespaces["search"] = {"results": WebDev.Search.Results, 
+                                       "query": WebDev.Search.QueryString, 
+                                       "model": model, 
+                                       "keywords": null};
+    }
+  }
+  // extract the keywords
+  if (document.getElementsByTagName("meta")) { 
+    var metaTags = document.getElementsByTagName("meta");
+    for (var i = 0; i < metaTags.length; i++) { 
+      if (metaTags[i].getAttribute("keywords") != null) { 
+        document.namespaces["search"]["keywords"] = metaTags[i].getAttribute("keywords").split(",");
+      }
+    }
+  }
+  return document.namespaces["search"];
 };

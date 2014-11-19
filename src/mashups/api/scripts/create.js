@@ -31,6 +31,4 @@ SimileAjax.jQuery(document).ready(function() {
     
     window._devDatabase = WebDev.Database.create();
     window._devDatabase.loadDataLinks(fDone);
-    //window..database = WebDev.Database.create();
-    //window.database.loadDataLinks(fDone);
 });

@@ -4,30 +4,27 @@ if (typeof WebDev == "undefined") {
       WebDev: {
         url: ""
       },
-      WebDesign: {
-         url: "http://jk.onshore.com:7888/WebDesign/api/webdesign-api.js",
-      },
-      Exhibit: {
-         url: "http://jk.onshore.com:7888/exhibit/api/exhibit-api.js?exhibit-use-local-resources=true&bundle=false"
-      },
-      SimileAjax: {
-        url: "http://jk.onshore.com:7888/ajax/api/simile-ajax-api.js",
-      },
+      WebDesign: { url: "/WebDesign/api/webdesign-api.js" },
+      Exhibit: { url: "/exhibit/api/exhibit-api.js?exhibit-use-local-resources=true&bundle=false" },
+      SimileAjax: { url: "/ajax/api/simile-ajax-api.js" },
       Numerics: {
         url: null
       },
       Highslide: {
         url: null
       },
-      Prototype: [],
-      Magiczoom: [],
-      Openpopups: [],
-      Scriptaculous: [],
-      Jquery: [],
-      Dojo: [],
-      Firebug: [],
+      hasLoadableUtilitiesP: this.LoadableUtilities || false,
+      Magiczoom: (MagicZoom || []),
+      Openpopups: (OpenPopups || []),
+      Jquery: (JQuery || []),
+      Dojo: (Dojo || []),
+      Firebug: false,
       _init: function() { 
-        
+        this.effects = {
+          app: [],
+          overlays: [],
+          dd: []
+        }
       },
     },
     LayoutElements: {
@@ -304,6 +301,33 @@ WebDev.Utility._handlers = [
   "onmousedown",  "onmouseenter", "onmouseleave", "onmousemove", "onmouseout", "onmouseover", "onmouseup", "onclick",
   "onresize", "onscroll"
 ];
+WebDev.Utility._handlersBound = false;
+WebDev.Utility._compiledTemplates['sentinel'] = '(function(){return null;})';
+WebDev.Utility._compiledTemplates.nodes = [];
+
+WebDev.Utility.compileTemplate = function(template) { 
+  // compile the templates. return the nodes.
+  var _c = "", STATE = null, INTEMPLATE = true, location = 0;
+  if ((template == "undefined") || (template == null)) { 
+    WebDev.Utility._compiledTemplates.nodes.unshift(WebDev.Utility._compiledTemplates['sentinel']);
+  }
+  while (location <= template.length) { 
+    // check to see if we are in the beginning of a template
+    if ((template[i] == '{') && (template[i+1] == '{')) { 
+      STATE = INTEMPLATE;
+      // FIFO that template
+      try { 
+        WebDev.Utility._compiledTemplates.nodes.unshift(template.substring(template[i+2], template.indexOf('}}'));
+      } catch (e) { 
+        throw(e, "no end of the template found");
+      }
+    }
+    location = template.indexOf('}}')+1;
+    STATE = null;
+  }
+  WebDev.Utility._compiledTemplates.nodes.unshift(WebDev.Utility._compiledTemplates['sentinenl']);
+  return WebDev.Utility._compiledTemplates.nodes;
+};
 
 
 

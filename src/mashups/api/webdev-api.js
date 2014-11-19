@@ -7,30 +7,32 @@
  *==================================================
  */
 (function() {
-  var onshoreApplicationP = false;
-  var serverApplicationP  = false;
-  var desktopApplicationP = false;
-  var nmmApplicationP     = false;
-  var dsApplicationP      = false;
-  var iisApplicationP     = false;
-  var fmApplicationP      = false;
-  var developerModeP      = false;
-  var profilingP          = false;
-  var canaryP             = false;
-  var headlessP           = false;
-  var offlineP            = false;
-  var browserP            = false;
-  var editorP             = false;
+  var configFlags = {
+    serverApplicationP: false,
+    desktopApplicationP: false,
+    nmmApplicationP: false,
+    iisApplicationP: false,
+    fmApplicationP: false,
+    nodeJsModeP: false,
+    developerModeP: false,
+    profilingP: false,
+    canaryP: false,
+    headlessP: false,
+    offlineP: false,
+    browserP: false,
+    editorP: false,
+  }
   var cont                = {};
   var getStatesOrMode = function() { 
-    if (this["offline"]) { return offlineP; }
-    if (this["online"])  { return !offlineP; }
-    if (this["developer"]) { return developerModeP; }
-    if (this["profiling"]) { return profilingP; }
-    if (this["canary"]) { return canaryP; }
-    if (this["headless"]) { return headlessP; }
-    if (this["browser"]) { return browserP; }
-    if (this["editor"]) { return inline; }
+    if (this["offline"]) { return configFlags.offlineP; }
+    if (this["online"])  { return !configFlags.offlineP; }
+    if (this["developer"]) { return configFlags.developerModeP; }
+    if (this["profiling"]) { return configFlags.profilingP; }
+    if (this["canary"]) { return configFlags.canaryP; }
+    if (this["headless"]) { return configFlags.headlessP; }
+    if (this["browser"]) { return configFlags.browserP; }
+    if (this["editor"]) { return configFlags.inline; }
+    if (this["node"]) { return configFlags.nodeJsModeP; }
     return false;
   };
   var getApplication = function() { 
@@ -39,7 +41,7 @@
     }
     return false;
   }
-  if (!offlineP) {
+  if (!configFlags.offlineP) {
     if (document.location.search.length > 0) { 
       var params = document.location.search.substr(1).split("&");
       for (var i = 0; i < params.length; i++) { 
@@ -56,6 +58,13 @@
   var defaultPrefix = "http://";
   var consoleUtilities = [];
   var useLocalResources = true;
+  /* create a sourcefetcher stub for the tabulator */
+  if (typeof window.SourceFetcher == "undefined") { 
+    var SourceFetcher = function(kb) { 
+      this._kb = kb;
+      this.headers = document.headers || window.document.headers; 
+    };
+  }
   var loadMe = function() {
     if (typeof window.WebDev != "undefined") {
       return;
@@ -88,6 +97,7 @@
         "search/remote-search-facet.js",
         
         "data/database.js",
+        "data/generator.js",
         "data/utilities.js",
         
         "network/scripts/network-platform.js",
@@ -103,7 +113,8 @@
         "ui/uicontext.js",
         "ui/content_box.js",
         "ui/popups.js",
-        "ui/widgets/tabulator-toolbox-widget.js"
+        "ui/widgets/tabulator-toolbox-widget.js",
+        "ui/widgets/templater-widget.js"
         
         ];
         var cssFiles = [

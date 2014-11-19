@@ -38,6 +38,14 @@ WebDev.LoadableUtilities = {"items": [
    { "type": "utility", 
      "label": "Logger",
      "description": "arbitrary event logger",
-     "source": "logger.js" }
+     "source": "logger.js" },
+   { "type": "utility", 
+     "label": "DatabaseSizer", 
+     "description": "measures object sizes in the database", 
+     "source": "database-sizer.js" },
+   { "type": "utility",
+     "label": "NetworkProfiler",
+     "description": "profile latency and delivery times for content traversing the network",
+     "source": "network-profiler.js" }
   ]
 };

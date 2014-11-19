@@ -39,7 +39,7 @@ WebDev.Logging = function() {
   this.init = function() { 
     var doStep = function() { 
       return this.logFacet.step;
-    }
+    };
     return doStep;
   };
   return {
@@ -58,5 +58,5 @@ WebDev.Logging = function() {
         return message;
       }
     }
-  }
+  };
 };

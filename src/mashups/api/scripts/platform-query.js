@@ -1,4 +1,5 @@
-/* query the platform via the SimileAjax api 
+/* -*- Mode: Javascript; js-indent-level: 2 -*-
+ * query the platform via the SimileAjax api 
  * package: Webdev
  */
 if (typeof WebDev == "undefined") { 
@@ -10,6 +11,7 @@ WebDev.PlatformQuery = function() {
   var qResults = "";
   var qlLanguage = "sparql";
   var qlLanguagesSupported = [];
+  var qDefinitionHash = {};
   return this;
 };
 

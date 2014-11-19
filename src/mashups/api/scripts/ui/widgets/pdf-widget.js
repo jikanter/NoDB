@@ -28,7 +28,6 @@ WebDev.PdfDisplayWidget.prototype._onContainerMouseClick = function(evt) {
   var coords = SimileAjax.DOM.getPageCoordinates(this._containerElmt);
   var docWidth = document.body.offsetWidth;
   var docHeight = document.body.offsetHeight;
-  
   var pdf = this._initializePrintDriver();
 };
 
