@@ -431,38 +431,6 @@
 	    </Set>
 	  </New>
 	</Item>
-
-	<Item>
-	  <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
-	    <Set name="contextPath">/dojo</Set>
-	    <Set name="resourceBase">/Users/admin/Developer/Projects/dojo.svn</Set>
-	    <Set name="handler">
-	      <New id="javadocServletHandler" class="org.mortbay.jetty.servlet.ServletHandler">
-		<Set name="servlets">
-		  <Array type="org.mortbay.jetty.servlet.ServletHolder">
-		    <Item>
-		      <New class="org.mortbay.jetty.servlet.ServletHolder">
-			<Set name="name">Dojo</Set>
-			<Set name="className">org.mortbay.jetty.servlet.DefaultServlet</Set>
-		      </New>
-		    </Item>
-		  </Array>
-		</Set>
-		<Set name="servletMappings">
-		  <Array type="org.mortbay.jetty.servlet.ServletMapping">
-		    <Item>
-		      <New class="org.mortbay.jetty.servlet.ServletMapping">
-			<Set name="pathSpec">/</Set>
-			<Set name="servletName">Dojo</Set>
-		      </New>
-		    </Item>
-		  </Array>
-		</Set>
-	      </New>
-	    </Set>
-	  </New>
-	</Item>
-	
 	<Item>
 	  <New id="aContext" class="org.mortbay.jetty.handler.ContextHandler">
 	    <Set name="contextPath">/tab</Set>
