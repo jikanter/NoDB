@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>AppleURLSchemes</key>
+    <dict>
+      <key>version</key>
+      <string>0.0.0.1</string>
+      <!-- these keys are the name of the url scheme, followed by a live
+      example of it's use via 'Copy Link URL' -->
+      <key>help</key>
+      <string>help:anchor='scpedt11951'%20bookID=Script%20Editor%20Help</string>
+      <key>file</key>
+ <string>file:///Developer/Documentation/DocSets/com.apple.ADC_Reference_Library.CoreReference.docset/Contents/Resources/Documents/documentation/Cocoa/Conceptual/CocoaDrawingGuide/index.html#//apple_ref/doc/uid/TP40003290</string>
+    </dict>
+    <key>http</key>
+    <string>http://localhost/~admin/2009/10/WebDesign.app</string>
+    <key>txmt</key>
+    <string>txmt://open/?url=file://~/.bash_profile%26line=11%26column=2</string>
+    <key>x-disc</key>
+    <string>x-disc://iPhone%20SDK/Packages/iPhoneDocumentation.pkg</string>
+    <key>IODeviceTree</key>
+    <string>IODeviceTree:/options</string>
+    <key>x-man-page</key>
+    <string>x-man-page:/1/mdimport</string>
+    <key>webkit</key>
+    <string>webkit://Versions/A/Frameworks/WebCore.Framework/Resources/Inspector/inspector.css</string>
+    <key>man</key>
+    <string>man://plist/5</string>
+  </dict>
+</plist>

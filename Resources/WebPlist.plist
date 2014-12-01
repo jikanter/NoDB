@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- apparently plist files can hold at most 1 object if the top level element is a dict. 
+     I believe it can hold more than that if the top level object is an array, but see man:%2F%2Fplist(5)
+     good to know -->
+<plist version="1.0">
+  <dict>
+    <key>CFBundleGetInfoString</key>
+    <string>WebPlist 0.0.0.1</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.newmediameltdown.web.WebPlist</string>
+    <key>CFBundleName</key>
+    <string>Web Plist</string>
+    <key>CFBundleShortVersionString</key>
+    <string>0.0.0.1</string>
+    <key>IFPkgFlagIsRequired</key>
+    <false/>
+    <key>IFPkgFlagRootVolumeOnly</key>
+    <false/>
+    <key>IFPkgFlagExtensions</key>
+    <true/>
+    <key>IFPkgExtensionApiVersion</key>
+    <string>0.0.0.1</string>
+    <key>IFPkgAuthorString</key>
+    <string>NMM</string>
+    <key>IFPkgFlagExtensionBundlesSchemata</key>
+    <true/>
+    <key>IFPkgFlagPrivateExtensionBundle</key>
+    <true/>
+    <key>IFProjectInternalURL</key>
+    <string>http://localhost/~admin/2011/5/6/WebDesign.app</string>
+    <key>IFProjectInternalURL6</key>
+    <string>http://local.developer.apple.com/www/users/admin/Sites/2011/5/6/Webdesign.app</string>
+    <key>IFProjectLispURL</key>
+    <string>file:///Lisp/Implementations/Ccl/ccl/doc/ccl-documentation.html</string>
+  </dict>
+</plist>

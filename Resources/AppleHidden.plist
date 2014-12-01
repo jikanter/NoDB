@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- note that this was hidden in the ".hidden" directory in the iphone sdk volume directory -->
+<!--
+  as best i can, I reproduce all such files on disk with the "." replaced with the text
+  "dot_" when ejecting the media. For example, a directory named ".hidden" will be 
+  renamed to "dot_hidden" in the created directory
+  However, as best as I can tell, i do not get everything.
+  Here I provide links to 
+  documents that discuss what I know about such formats.
+  
+  NOTE: Like AppleSchemes.plist, the values in this plist are a string containing a hyperlink.
+  However, unlike AppleSchemes.plist, the values in this file can be either a string
+  or a dictionary themselves.
+  If the value is dictionary, it contains two elements. The element with key "documentation" is
+  a hyperlink to a document describing the given format, and the element with key "example" is
+  an example of the given format. The file itself is perhaps renamed for easy visibility as described above.
+  
+  more formally:
+ -->
+ <!-- DOT = "." -->
+ <!-- DASH = "-" -->
+<plist version="1.0">
+  <dict>
+    <key>NSURLFileName</key>
+    <string>AppleHiddenFiles</string>
+    <key>version</key>
+    <string>0.0.0.1</string>
+    <key>DOThidden</key>
+    <string></string>
+    <key>DOTDStore</key>
+    <string></string>
+    <key>DOTvol</key>
+    <string></string>
+    <key>DOThotfilesDOTbtree</key>
+    <string></string>
+    <key>DOTfile</key>
+    <string></string>
+    <key>DOTDocumentRevisionsDASHv100</key>
+    <string></string>
+    <key>DOTfile</key>
+    <string></string>
+    <key>DOTdbfseventsd</key>
+    <string></string>
+    <key>DOTOSInstallerMessages</key>
+    <string></string>
+  </dict>
+</plist>
