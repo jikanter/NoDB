@@ -5,6 +5,9 @@
   <version>1.0</version>
   <scm>
     <connection>scm:svn:http://jk.onshore.com/~admin/repository/webdevel/trunk/</connection>
-  <developerConnection>scm:svn:http://jk.onshore.com/~admin/repository/webdevel/trunk/</developerConnection>
+    <developerConnection>scm:svn:http://jk.onshore.com/~admin/repository/webdevel/trunk/</developerConnection>
   </scm>
+  <data-formats>
+    <data-format>json</data-format>
+  </data-formats>
 </project>

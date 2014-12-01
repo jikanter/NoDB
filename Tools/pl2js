@@ -2,14 +2,33 @@
 # turns a plist into a file containing a javascript function 
 # in which the statements are the contents of the plist
 # TODO: make this utility generate VALID javascript
+#       - subtask - make this utility generate with something other than pl
+#       - subtask - make these generate polymer polyfills rather than loose xml
 #usage="$0 <plistfilename>"
-if [ "x$1" == "x" ]; then
+if [ "$1" == "" ]; then
   filename="Resources/WebPlist.plist"
 else
   filename="$1"
 fi
-data=`pl -input "$filename"`
-echo "var pList = function()" $data
+
+function e4xParser { 
+  # trim xml doctype declaration to make it e4x parseable
+  data=`cat "$filename" |sed -e 's/\<\?xml version=\"1.0\" encoding=\"UTF-8\"\?\>//g'`
+  data=`echo ${data} |sed -e 's/\<\!DOCTYPE plist PUBLIC \"-\/\/Apple\/\/DTD PLIST 1.0\/\/EN\" \"http:\/\/www.apple.com\/DTDs\/PropertyList-1.0.dtd\"\>//g'`
+  echo "#!/usr/bin/env rhino"
+  echo "var pList = " $data
+};
+
+function jsParser { 
+  data=`pl -input "$filename"`
+  echo "var pList = function()" $data "();"
+};
+
+#e4xParser;
+jsParser;
+
+
+
 
 
 
