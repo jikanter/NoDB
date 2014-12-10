@@ -8,32 +8,27 @@
  */
 (function() {
   var configFlags = {
-    serverApplicationP: false,
-    desktopApplicationP: false,
-    nmmApplicationP: false,
-    iisApplicationP: false,
-    fmApplicationP: false,
-    nodeJsModeP: false,
-    developerModeP: false,
-    profilingP: false,
-    canaryP: false,
-    headlessP: false,
-    offlineP: false,
-    browserP: false,
-    editorP: false,
+    serverApplicationP: false, desktopApplicationP: false,
+    nodeJsModeP: false,        developerModeP: false, 
+    browserP: false,           editorP: false,
+    nmmApplicationP: false,    iisApplicationP: false,
+    profilingP: false,         canaryP: false, 
+    headlessP: false,          offlineP: false,
+    nativeAppP: false,         featureDetectionP: true,
+    loadedFrameworks: ["angular", "polymer", "jquery", "extjs"],
+    loaderType: "custom-ajax" // TODO: should be bower
   }
   var cont                = {};
-  var getStatesOrMode = function() { 
-    if (this["offline"]) { return configFlags.offlineP; }
-    if (this["online"])  { return !configFlags.offlineP; }
-    if (this["developer"]) { return configFlags.developerModeP; }
-    if (this["profiling"]) { return configFlags.profilingP; }
-    if (this["canary"]) { return configFlags.canaryP; }
-    if (this["headless"]) { return configFlags.headlessP; }
-    if (this["browser"]) { return configFlags.browserP; }
-    if (this["editor"]) { return configFlags.inline; }
-    if (this["node"]) { return configFlags.nodeJsModeP; }
-    return false;
+  if (featureDetectionP) { 
+    var testFeature = function(testString, object) { 
+      return (testString in object ? true : false);
+    };
+  }
+  var bowerP = function() { 
+    return (configFlags["loaderType"] == "bower" ? true : false)
+  };
+  var customLoaderP = function() { 
+    return (configFlags["loaderType"].indexOf("custom") != -1) ? true : false)
   };
   var getApplication = function() { 
     if (this.modal || this.stateful) { 
@@ -70,12 +65,13 @@
       return;
     }
 //    document.writeln("window");
+  if (customLoaderP() && (configFlags["loaderType"].indexOf("ajax") != -1)) { 
     window.WebDev = {
       loaded:     false,
       params:     { bundle: !useLocalResources, autoCreate: true, safe: false },
-      namespace: "http://jk.jordankanter.selfip.net:7888/webdesign#",
+      namespace: "http://boomui.com/ns/webdesign#",
       dataNamespaces: {},
-      getNamespace: function(namespace) { return window.document.documentElement.getAttribute(namespace); },
+      getNamespace: function(namespace) { return document.documentElement.getAttribute(namespace); },
       importers:  {},
       locales:    [ "en" ]
     }
@@ -84,7 +80,6 @@
         "persistence.js",
         "create.js",
         "util-library.js",
-        
         
         "log/logger.js",
         
@@ -242,11 +237,10 @@
     if (typeof SimileAjax == "undefined") {
         window.SimileAjax_onLoad = loadMe;
         var url = ( useLocalResources ?
-            //"chrome://net/media/ajax/api/simile-ajax-api.js" :
                      ( useChromeResources ?  
-                        "chrome://net/media/ajax/api/simile-ajax-api.js" 
-                       : "http://localhost:7888/ajax/api/simile-ajax-api.js") 
-                       : "http://jk.jordankanter.selfip.net:7888/ajax/api-2.0/simile-ajax-api.js");
+                          "chrome://net/media/ajax/api/simile-ajax-api.js" 
+                     : "http://localhost:7888/ajax/api/simile-ajax-api.js") 
+                  : "http://boomui.com/ajax/api-2.0/simile-ajax-api.js");
             
         var createScriptElement = function() {
             var script = document.createElement("script");
@@ -267,5 +261,6 @@
     } else {
         loadMe();
     }
+  }
 
 })();
