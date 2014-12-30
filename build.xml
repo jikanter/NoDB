@@ -7,15 +7,21 @@
     | This is just for bundling and minifying javascript and CSS files.
     |
     +-->
+    <!--
+<taskdef name="gendocs"
+        classname="com.newmediameltdown.genDocs.genDocTask"
+        classpath="tools/genDocTask.jar" />
+    -->
 
-<project default="bundle" basedir="." name="Exhibit">
+<project default="bundle" basedir="." name="WebDesign">
 
   <target name="tasks">
     <taskdef name="jsmin"
         classname="edu.mit.simile.jsminTask.JSMinTask"
-        classpath="tools/jsminTask.jar"/>
+        classpath="tools/jsminTask.jar" />
   </target>
-      
+  
+  
   <target name="bundle" depends="tasks">
     <!-- SimileAjax -->
     <jsmin output="src/ajax/api/simile-ajax-bundle.js">
@@ -116,5 +122,18 @@
             <include name="**/*.js" />
         </fileset>
     </jsmin>
+    
+    
+    <!-- app output -->
+    <jsmin output="src/app/jquery.js">
+      <fileset dir="src/jquery">
+        <include name="**/*.js" />
+      </fileset>
+    </jsmin>
+    
+    
+    <!-- dataset output -->
+    <copy file="src/mashups/api/scripts/data/media_types.js" tofile="src/mashups/app/dataset.js" />
+    
   </target>
 </project>

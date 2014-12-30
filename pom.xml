@@ -2,12 +2,16 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.newmediameltdown.projects</groupId>
   <artifactId>webdesign</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <scm>
-    <connection>scm:svn:http://jk.onshore.com/~admin/repository/webdevel/trunk/</connection>
-    <developerConnection>scm:svn:http://jk.onshore.com/~admin/repository/webdevel/trunk/</developerConnection>
+    <connection>scm:git:https://github.com/jikanter/NoDB</connection>
+    <developerConnection>scm:git:http://dev.jordankanter.com/.git</developerConnection>
   </scm>
-  <data-formats>
-    <data-format>json</data-format>
-  </data-formats>
+  <contributors>
+      <contributor>
+          <name>Jordan Kanter</name>
+          <organization>Boomshaka Design</organization>
+          <email>jikanter@gmail.com</email>
+      </contributor>
+  </contributors>
 </project>
