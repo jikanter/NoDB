@@ -25,7 +25,8 @@
  {id: 24, label: "lisp-file", suffix: "lisp"},
  {id: 25, label: "act-file", suffix: "act"},
  {id: 26, label: "indd-file", suffix: "indd"},
- {id: 27, label: "xml-containing-file"}
+ {id: 27, label: "xml-containing-file"},
+ {id: 28, label: "javascript-file", suffix: "['js']"}
  ],
- "uriPrefix": "http://localhost:7888"
+ "uriPrefix": "http://dev.jordankanter.com"
 }
