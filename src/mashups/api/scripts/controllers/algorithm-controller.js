@@ -1,9 +1,10 @@
 /**
  * @fileoverview algorithm dispatch controller 
  * @copyright Copyright (C) 2013 New Media Meltdown Inc. All rights reserved.
+ * @copyright Copyright (C) 2015 Boomshaka Design Inc. All rights reserved.
  */
 var Algorithm = new Object();
-Algorithm.aStarSort = function(a) { };
+Algorithm.Environment = {};
 Algorithm.heapSort = function(a) { };
 Algorithm.bubbleSort = function(array) { 
   for (var i = 1; i < array.length; ++i) { 
@@ -40,17 +41,26 @@ Algorithm.config = function() {
   var name = "bubblesort";
   var side = "client";
   var timeout = 0;
-  this.applyAlgorithm = function(name, params) { 
+  this.runSerializedAlgorithm = function(name, params) { 
     if (timeout == 0) { 
-      eval(name + '(' + params.jpin(',') + ')');
+      // caution! Unsafe!
+      JSON.parse(name + '(' + params.join(',') + ')');
     }
     else { 
-      setTimeout(eval(name + '('+ params.join(',') + ')'), timeout);
+      setTimeout(JSON.parse(name + '('+ params.join(',') + ')'), timeout);
     }
     return false;
   };
   var self = this;
-  var run = function(params) { 
+  var runSerialized = function(params) { 
     self.applyAlgorithm(this.name, this.params);
   };
+};
+Algorithm.aStarSort = function(a) {
+  
+};
+
+Algorithm.prototype.apply = function(name, args, env) {
+  Algorithm.Environment = env;
+  Algorithm[name].apply(args[0], args.split(1, args.length));
 };
