@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.newmediameltdown.projects</groupId>
+  <groupId>com.newmediameltdown</groupId>
   <artifactId>webdesign</artifactId>
   <version>1.1</version>
+  <packaging>pom</packaging>
   <scm>
     <connection>scm:git:https://github.com/jikanter/NoDB</connection>
     <developerConnection>scm:git:http://dev.jordankanter.com/.git</developerConnection>
@@ -14,4 +15,24 @@
           <email>jikanter@gmail.com</email>
       </contributor>
   </contributors>
+  <modules>
+    <module>referee</module>
+  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>org.openrdf</groupId>
+      <artifactId>sesame</artifactId>
+      <version>1.2.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openrdf</groupId>
+      <artifactId>openrdf-model</artifactId>
+      <version>1.2.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openrdf</groupId>
+      <artifactId>rio</artifactId>
+      <version>1.0.10</version>
+    </dependency>
+  </dependencies>
 </project>
