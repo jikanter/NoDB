@@ -2,7 +2,7 @@
  *  Simile WebDev API
  *
  *  Include WebDev in your HTML file as follows:
- *    <script src="http://localhost:7888/WebDev/api-2.0/WebDev-api.js" type="text/javascript"></script>
+ *    <script src="http://local.jordankanter.com/WebDev/api-2.0/WebDev-api.js" type="text/javascript"></script>
  *
  *==================================================
  */
@@ -19,7 +19,7 @@
     loaderType: "custom-ajax" // TODO: should be bower
   }
   var cont                = {};
-  if (featureDetectionP) { 
+  if (configFlags.featureDetectionP) { 
     var testFeature = function(testString, object) { 
       return (testString in object ? true : false);
     };
@@ -28,7 +28,7 @@
     return (configFlags["loaderType"] == "bower" ? true : false)
   };
   var customLoaderP = function() { 
-    return (configFlags["loaderType"].indexOf("custom") != -1) ? true : false)
+    return ((configFlags["loaderType"].indexOf("custom") != -1) ? true : false);
   };
   var getApplication = function() { 
     if (this.modal || this.stateful) { 
@@ -150,9 +150,7 @@
         }
         
         if (useLocalResources) {
-            //WebDev.urlPrefix = "http://sleepy.newmediameltdown.com:9089/net/media/WebDev/api/";
-            //WebDev.urlPrefix = "chrome://net/media/WebDev/api";
-            WebDev.urlPrefix = "http://jk.jordankanter.selfip.net:7888/webdesign/api/";
+            WebDev.urlPrefix = "http://local.jordankanter.com/mashups/api/";
         }
 
         if (WebDev.params.locale) { // ISO-639 language codes,
@@ -239,7 +237,7 @@
         var url = ( useLocalResources ?
                      ( useChromeResources ?  
                           "chrome://net/media/ajax/api/simile-ajax-api.js" 
-                     : "http://localhost:7888/ajax/api/simile-ajax-api.js") 
+                     : "http://local.jordankanter.com/ajax/api/simile-ajax-api.js") 
                   : "http://boomui.com/ajax/api-2.0/simile-ajax-api.js");
             
         var createScriptElement = function() {

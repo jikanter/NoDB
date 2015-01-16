@@ -56,9 +56,7 @@ Algorithm.config = function() {
     self.applyAlgorithm(this.name, this.params);
   };
 };
-Algorithm.aStarSort = function(a) {
-  
-};
+Algorithm.aStarSort = function(a) {};
 
 Algorithm.prototype.apply = function(name, args, env) {
   Algorithm.Environment = env;

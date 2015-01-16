@@ -32,7 +32,7 @@
     window.Tabulator = {
       loaded:     false,
       params:     { bundle: !useLocalResources, autoCreate: true, safe: false },
-      namespace: "http://newmediameltdown.com:7888/tab#",
+      namespace: "http://jordankanter.com/tabulator#",
       dataNamespaces: { 
           freebase: "http://freebase.com/view#",
           simile: "http://simile.mit.edu/2006/11/Simile#",
@@ -51,39 +51,39 @@
       locales:    [ "en" ]
     }
     var javascriptFiles = [
-      "../../../tab/ajaw/js/util.js",
-      "../../../tab/ajaw/js/configuration.js",
-      "../../../tab/ajaw/js/uri.js",
-      "../../../tab/ajaw/js/webdav.js",
-      "../../../tab/ajaw/js/rdf/term.js",
-      "../../../tab/ajaw/js/rdf/match.js",
-      "../../../tab/ajaw/js/rdf/rdfparser.js",
-      "../../../tab/ajaw/js/rdf/n3parser.js",
-      "../../../tab/ajaw/js/rdf/identity.js",
-      "../../../tab/ajaw/js/rdf/query.js",
+      "../../../tabulator/ajaw/js/util.js",
+      "../../../tabulator/ajaw/js/configuration.js",
+      "../../../tabulator/ajaw/js/uri.js",
+      "../../../tabulator/ajaw/js/webdav.js",
+      "../../../tabulator/ajaw/js/rdf/term.js",
+      "../../../tabulator/ajaw/js/rdf/match.js",
+      "../../../tabulator/ajaw/js/rdf/rdfparser.js",
+      "../../../tabulator/ajaw/js/rdf/n3parser.js",
+      "../../../tabulator/ajaw/js/rdf/identity.js",
+      "../../../tabulator/ajaw/js/rdf/query.js",
       //"../../../tab/ajaw/js/rdf/sources.js",
-      "../../../tab/ajaw/js/labeler.js",
-      "../../../tab/ajaw/js/rdf/remote.js",
-      "../../../tab/ajaw/js/rdf/serialize.js",
-      "../../../tab/ajaw/js/log.js",
-      "../../../tab/ajaw/js/preferences.js",
-      "../../../tab/ajaw/js/updateCenter.js",
-      "../../../tab/ajaw/js/userinput.js",
-      "../../../tab/ajaw/js/outline.js",
-      "../../../tab/ajaw/js/tabulate.js",
-      "../../../tab/ajaw/js/internalKnowledge.js",
-      "../../../tab/ajaw/js/sparqlUpdate.js",
-      "../../../tab/ajaw/js/sorttable.js",
-      "../../../tab/ajaw/js/mapView.js",
-      "../../../tab/ajaw/js/addView.js",
-      "../../../tab/ajaw/js/calView.js",
-      "../../../tab/ajaw/js/calView/timeline/api/timeline-api.js",
-      "../../../tab/ajaw/js/calView/timeline/api/timelineView.js",
-      "../../../tab/ajaw/js/tabviews.js",
-      "../../../tab/ajaw/js/rdf/sparql.js",
-      "../../../tab/ajaw/js/sparqlView.js",
-      "../../../tab/ajaw/js/calView/calView.js",
-      "../../../tab/ajaw/js/tableView.js"
+      "../../../tabulator/ajaw/js/labeler.js",
+      "../../../tabulator/ajaw/js/rdf/remote.js",
+      "../../../tabulator/ajaw/js/rdf/serialize.js",
+      "../../../tabulator/ajaw/js/log.js",
+      "../../../tabulator/ajaw/js/preferences.js",
+      "../../../tabulator/ajaw/js/updateCenter.js",
+      "../../../tabulator/ajaw/js/userinput.js",
+      "../../../tabulator/ajaw/js/outline.js",
+      "../../../tabulator/ajaw/js/tabulate.js",
+      "../../../tabulator/ajaw/js/internalKnowledge.js",
+      "../../../tabulator/ajaw/js/sparqlUpdate.js",
+      "../../../tabulator/ajaw/js/sorttable.js",
+      "../../../tabulator/ajaw/js/mapView.js",
+      "../../../tabulator/ajaw/js/addView.js",
+      "../../../tabulator/ajaw/js/calView.js",
+      "../../../tabulator/ajaw/js/calView/timeline/api/timeline-api.js",
+      "../../../tabulator/ajaw/js/calView/timeline/api/timelineView.js",
+      "../../../tabulator/ajaw/js/tabviews.js",
+      "../../../tabulator/ajaw/js/rdf/sparql.js",
+      "../../../tabulator/ajaw/js/sparqlView.js",
+      "../../../tabulator/ajaw/js/calView/calView.js",
+      "../../../tabulator/ajaw/js/tableView.js"
     ];
         var cssFiles = [
         ];
@@ -123,9 +123,7 @@
         }
         
         if (useLocalResources) {
-            //Tabulator.urlPrefix = "http://sleepy.newmediameltdown.com:9089/net/media/Tabulator/api/";
-            //Tabulator.urlPrefix = "chrome://net/media/Tabulator/api";
-            Tabulator.urlPrefix = "http://jk.jordankanter.selfip.net:7888/mashups/api/";
+            Tabulator.urlPrefix = "http://dev.jordankanter.com/";
         }
 
         if (Tabulator.params.locale) { // ISO-639 language codes,
@@ -213,8 +211,8 @@
             //"chrome://net/media/ajax/api/simile-ajax-api.js" :
                      ( useChromeResources ?  
                         "chrome://net/media/ajax/api/simile-ajax-api.js" 
-                       : "http://localhost:7888/ajax/api/simile-ajax-api.js") 
-                       : "http://jk.onshore.com:7888/ajax/api-2.0/simile-ajax-api.js");
+                       : "http://dev.jordankanter.com/ajax/api/simile-ajax-api.js") 
+                       : "http://jordankanter.com/ajax/api-2.0/simile-ajax-api.js");
             
         var createScriptElement = function() {
             var script = document.createElement("script");

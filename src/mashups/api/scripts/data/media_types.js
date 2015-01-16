@@ -26,7 +26,8 @@
   {id: 25, label: "act-file", suffix: "act"},
   {id: 26, label: "indd-file", suffix: "indd"},
   {id: 27, label: "xml-containing-file"},
-  {id: 28, label: "javascript-file", suffix: "['js']"}
+  {id: 28, label: "javascript-file", suffix: "['js']"},
+  {id: 29, label: "json-file", suffix: "['json']"}
   ],
   "uriPrefix": "http://dev.jordankanter.com"
 }
