@@ -16,7 +16,10 @@
       </contributor>
   </contributors>
   <modules>
-    <module>referee</module>
+    <module>tools</module>
+    <module>src/ajax/referee</module>
+    <module>src/mashups/</module>
+    <module>src/tabulator/</module>
   </modules>
   <dependencies>
     <dependency>
@@ -34,5 +37,17 @@
       <artifactId>rio</artifactId>
       <version>1.0.10</version>
     </dependency>
+    <dependency>
+      <groupId>rhino</groupId>
+      <artifactId>js</artifactId>
+      <version>1.6R7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>clojure</artifactId>
+      <version>1.7.0-alpha5</version>
+    </dependency>
   </dependencies>
+  
+  
 </project>
