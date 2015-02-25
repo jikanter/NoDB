@@ -24,7 +24,10 @@
   
   <target name="bundle" depends="tasks">
     <!-- SimileAjax -->
-    <jsmin output="src/ajax/api/simile-ajax-bundle.js">
+   
+    <mkdir dir="target/simileajax/api/" />
+    
+    <jsmin output="target/simileajax/api/simile-ajax-bundle.js">
         <fileset dir="src/ajax/api/scripts">
             <include name="jquery*.js" />
             <include name="platform.js" />
@@ -38,102 +41,125 @@
     </jsmin>
       
     <!-- Exhibit -->
-    <jsmin output="src/webapp/api/exhibit-bundle.js">
+    <mkdir dir="target/exhibit/api" />
+    
+    <jsmin output="target/exhibit/api/exhibit-bundle.js">
         <fileset dir="src/webapp/api/scripts">
             <include name="**/*.js" />
             <exclude name="create.js" />
         </fileset>
     </jsmin>
-    <concat destfile="src/webapp/api/exhibit-bundle.css">
+    <concat destfile="target/exhibit/api/exhibit-bundle.css">
         <fileset dir="src/webapp/api/styles">
             <include name="**/*.css" />
         </fileset>
     </concat>
       
+    <!-- extension output directories -->
+    <mkdir dir="target/exhibit/extensions" />
+    <mkdir dir="target/exhibit/extensions/time" />
+    <mkdir dir="target/exhibit/extensions/map" />
+    <mkdir dir="target/exhibit/extensions/chart" />
+    
+    <!-- locale output directories -->
+    <mkdir dir="target/exhibit/api/locales/en" />
+    <mkdir dir="target/exhibit/api/locales/de" />
+    <mkdir dir="target/exhibit/api/locales/es" />
+    <mkdir dir="target/exhibit/api/locales/fr" />
+    <mkdir dir="target/exhibit/api/locales/sv" />
+    <mkdir dir="target/exhibit/api/locales/zh" />
+    
+    
     <!-- Time extension -->
-    <jsmin output="src/webapp/extensions/time/time-extension-bundle.js">
+    <jsmin output="target/exhibit/extensions/time/time-extension-bundle.js">
         <fileset dir="src/webapp/extensions/time/scripts">
             <include name="**/*.js" />
         </fileset>
     </jsmin>
-    <concat destfile="src/webapp/extensions/time/time-extension-bundle.css">
+    <concat destfile="target/exhibit/extensions/time/time-extension-bundle.css">
         <fileset dir="src/webapp/extensions/time/styles">
             <include name="**/*.css" />
         </fileset>
     </concat>
     
     <!-- Map extension -->
-    <jsmin output="src/webapp/extensions/map/map-extension-bundle.js">
+    <jsmin output="target/exhibit/extensions/map/map-extension-bundle.js">
         <fileset dir="src/webapp/extensions/map/scripts">
             <include name="**/*.js" />
         </fileset>
     </jsmin>
-    <concat destfile="src/webapp/extensions/map/map-extension-bundle.css">
+    <concat destfile="target/exhibit/extensions/map/map-extension-bundle.css">
         <fileset dir="src/webapp/extensions/map/styles">
             <include name="**/*.css" />
         </fileset>
     </concat>
     
     <!-- Chart extension -->
-    <jsmin output="src/webapp/extensions/chart/chart-extension-bundle.js">
+    <jsmin output="target/exhibit/extensions/chart/chart-extension-bundle.js">
         <fileset dir="src/webapp/extensions/chart/scripts">
             <include name="**/*.js" />
         </fileset>
     </jsmin>
-    <concat destfile="src/webapp/extensions/chart/chart-extension-bundle.css">
+    <concat destfile="target/exhibit/extensions/chart/chart-extension-bundle.css">
         <fileset dir="src/webapp/extensions/chart/styles">
             <include name="**/*.css" />
         </fileset>
     </concat>
     
       <!-- ========== Locales ========== -->
-    <jsmin output="src/webapp/api/locales/en/exhibit-en-bundle.js">
+      
+    
+    <jsmin output="target/exhibit/api/locales/en/exhibit-en-bundle.js">
         <fileset dir="src/webapp/api/locales/en/scripts">
             <include name="**/*.js" />
         </fileset>
     </jsmin>
     
-    <jsmin output="src/webapp/api/locales/es/exhibit-es-bundle.js">
-        <fileset dir="src/webapp/api/locales/es/scripts">
-            <include name="**/*.js" />
-        </fileset>
-    </jsmin>
-    
-    <jsmin output="src/webapp/api/locales/fr/exhibit-fr-bundle.js">
-        <fileset dir="src/webapp/api/locales/fr/scripts">
-            <include name="**/*.js" />
-        </fileset>
-    </jsmin>
-    
-    <jsmin output="src/webapp/api/locales/sv/exhibit-sv-bundle.js">
-        <fileset dir="src/webapp/api/locales/sv/scripts">
-            <include name="**/*.js" />
-        </fileset>
-    </jsmin>
-    
-    <jsmin output="src/webapp/api/locales/zh/exhibit-zh-bundle.js">
-        <fileset dir="src/webapp/api/locales/zh/scripts">
-            <include name="**/*.js" />
-        </fileset>
-    </jsmin>
-    
-    <jsmin output="src/webapp/api/locales/de/exhibit-de-bundle.js">
+    <jsmin output="target/exhibit/api/locales/de/exhibit-de-bundle.js">
         <fileset dir="src/webapp/api/locales/de/scripts">
             <include name="**/*.js" />
         </fileset>
     </jsmin>
     
+    <jsmin output="target/exhibit/api/locales/es/exhibit-es-bundle.js">
+        <fileset dir="src/webapp/api/locales/es/scripts">
+            <include name="**/*.js" />
+        </fileset>
+    </jsmin>
+    
+    <jsmin output="target/exhibit/api/locales/fr/exhibit-fr-bundle.js">
+        <fileset dir="src/webapp/api/locales/fr/scripts">
+            <include name="**/*.js" />
+        </fileset>
+    </jsmin>
+    
+    <jsmin output="target/exhibit/api/locales/sv/exhibit-sv-bundle.js">
+        <fileset dir="src/webapp/api/locales/sv/scripts">
+            <include name="**/*.js" />
+        </fileset>
+    </jsmin>
+    
+    <jsmin output="target/exhibit/api/locales/zh/exhibit-zh-bundle.js">
+        <fileset dir="src/webapp/api/locales/zh/scripts">
+            <include name="**/*.js" />
+        </fileset>
+    </jsmin>
+    
+    
+    
     
     <!-- app output -->
-    <jsmin output="src/app/jquery.js">
-      <fileset dir="src/jquery">
+    <jsmin output="target/exhibit/api/jquery.js">
+      <fileset dir="src/Contrib/jquery">
         <include name="**/*.js" />
       </fileset>
     </jsmin>
     
-    
-    <!-- dataset output -->
-    <copy file="src/mashups/api/scripts/data/media_types.js" tofile="src/mashups/app/dataset.js" />
-    
   </target>
+  
+  <target name="clean">
+    <delete dir="target/exhibit" />
+    <delete dir="target/simileajax" />
+  </target>
+  
 </project>
